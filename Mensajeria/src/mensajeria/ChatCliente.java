@@ -28,23 +28,24 @@ public class ChatCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textAreaCliente = new javax.swing.JTextArea();
         btnEnvia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnConectar = new javax.swing.JButton();
         txtip = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtEnviarMsg = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaCliente.setEditable(false);
+        textAreaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        textAreaCliente.setColumns(20);
+        textAreaCliente.setRows(5);
+        jScrollPane1.setViewportView(textAreaCliente);
 
         btnEnvia.setBackground(new java.awt.Color(153, 255, 204));
         btnEnvia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avion.png"))); // NOI18N
@@ -72,6 +73,8 @@ public class ChatCliente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("IP Servidor:");
 
+        txtUsuario.setText("Nombre/Usuario");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,7 +95,9 @@ public class ChatCliente extends javax.swing.JFrame {
                                 .addComponent(txtip, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnConectar))
                         .addGap(18, 18, 18)
-                        .addComponent(txtEnviarMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEnviarMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEnvia, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -107,15 +112,16 @@ public class ChatCliente extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtEnviarMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEnvia, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtip, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnConectar)
-                        .addGap(6, 6, 6)))
+                        .addGap(6, 6, 6))
+                    .addComponent(txtEnviarMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -135,7 +141,9 @@ public class ChatCliente extends javax.swing.JFrame {
 
     private void btnEnviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviaActionPerformed
         //imprimirDentro();
-        Mensajeria.cliente.enviarMSG(this.txtEnviarMsg.getText());
+        Mensajeria.cliente.enviarMSG(this.txtUsuario.getText()+": "+this.txtEnviarMsg.getText());
+        this.textAreaCliente.setText(this.textAreaCliente.getText()+this.txtUsuario.getText()+":"+this.txtEnviarMsg.getText()+"\n");
+        txtEnviarMsg.setText("");
     }//GEN-LAST:event_btnEnviaActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
@@ -191,8 +199,9 @@ public class ChatCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextArea textAreaCliente;
     private javax.swing.JTextField txtEnviarMsg;
+    private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtip;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,7 @@ public class ChatServidor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textAreaServer = new javax.swing.JTextArea();
         btnEnviar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
@@ -38,11 +38,11 @@ public class ChatServidor extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaServer.setEditable(false);
+        textAreaServer.setBackground(new java.awt.Color(255, 255, 255));
+        textAreaServer.setColumns(20);
+        textAreaServer.setRows(5);
+        jScrollPane1.setViewportView(textAreaServer);
 
         btnEnviar.setBackground(new java.awt.Color(153, 255, 204));
         btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avion.png"))); // NOI18N
@@ -117,7 +117,9 @@ public class ChatServidor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        Mensajeria1.servidor.enviarMSG(this.txtMsgEnviar.getText());
+        Mensajeria1.servidor.enviarMSG("SERVIDOR: "+this.txtMsgEnviar.getText());
+        this.textAreaServer.setText(this.textAreaServer.getText()+"SERVIDOR: "+this.txtMsgEnviar.getText()+"\n");
+        txtMsgEnviar.setText("");
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -166,7 +168,7 @@ public class ChatServidor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextArea textAreaServer;
     private javax.swing.JTextField txtMsgEnviar;
     // End of variables declaration//GEN-END:variables
 }

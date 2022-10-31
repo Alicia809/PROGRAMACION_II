@@ -54,7 +54,7 @@ public class Conector1 extends Thread{
             while(true){
                 text = this.entrada.readLine();
                 System.out.println(text);
-                ChatServidor.jTextArea1.setText(ChatServidor.jTextArea1.getText()+"Cliente: "+text+"\n");
+                ChatServidor.textAreaServer.setText(ChatServidor.textAreaServer.getText()/*"Cliente: "*/+text+"\n");
             }
         }catch(IOException e){};
         System.out.println("Algun tipo de error ha sucedido");

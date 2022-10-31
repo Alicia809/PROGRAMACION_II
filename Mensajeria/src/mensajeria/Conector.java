@@ -35,7 +35,7 @@ public class Conector extends Thread{
             this.entrada = new BufferedReader(entradaSocket);
             //Creacion de salida de datos para el envion de mensajes
             this.salida = new DataOutputStream(s.getOutputStream());
-            //this.salida.writeUTF("Conectado\n");
+            this.salida.writeUTF("CONECTADO\n");
             
        }catch(Exception e){};
         
@@ -46,7 +46,7 @@ public class Conector extends Thread{
         while(true){
             try{
                 texto = entrada.readLine();
-                ChatCliente.jTextArea1.setText(ChatCliente.jTextArea1.getText()+"Servidor: "+texto+"\n");
+                ChatCliente.textAreaCliente.setText(ChatCliente.textAreaCliente.getText()/*"Servidor: "*/+texto+"\n");
             }catch(IOException e){};
         }
     }
@@ -71,9 +71,9 @@ public class Conector extends Thread{
     public void desconectar(){
         try{
            s.close();
-        }catch(Exception e){};
+        }catch(IOException e){};
         try{
            ss.close();
-        }catch(Exception e){};
+        }catch(IOException e){};
     }
 }
